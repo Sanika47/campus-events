@@ -35,7 +35,6 @@
         <button
             type="submit"
             class="btn btn-primary"
-            onclick="window.location.href='/dashboard'">
             Login
         </button>
 
@@ -89,6 +88,7 @@ document.getElementById('loginForm')
         });
 
         const data = await response.json();
+        console.log("LOGIN RESPONSE:", data);
 
         if(response.ok && data.token){
 
@@ -119,6 +119,8 @@ document.getElementById('loginForm')
                 '/dashboard';
 
             }, 1000);
+
+        }
 
         } else {
 
