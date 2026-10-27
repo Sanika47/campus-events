@@ -24,8 +24,10 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $weeklyEvents = Event::all();
-    return view('events.dashboard', compact('weeklyEvents'));
+    return response()->json([
+        'count' => DB::table('roles')->count(),
+        'roles' => DB::table('roles')->get()
+    ]);
 });
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])
