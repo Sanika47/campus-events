@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/check-roles', function () {
-    return DB::table('roles')->get();
+    return response()->json([
+        'count' => DB::table('roles')->count(),
+        'roles' => DB::table('roles')->get()
+    ]);
 });
 
 Route::get('/', function () {
