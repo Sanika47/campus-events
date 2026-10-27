@@ -33,11 +33,16 @@
                 <a href="{{ url('/') }}" class="text-white text-decoration-none">Feel the Thrill</a>
             <div class="mt">
 
-                <button
-                    class="btn btn-danger"
-                    onclick="logout()">
-                    Logout
-                </button>
+                @if(!request()->is('login'))
+                    @auth
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-warning btn-sm">
+                                Logout
+                            </button>
+                        </form>
+                    @endauth
+                @endif
 
             </div>
                 {{-- Show logout if user is authenticated --}}
