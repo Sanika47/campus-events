@@ -4,12 +4,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RegistrationController;
 use App\Models\Event;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 */
+
+Route::get('/check-roles', function () {
+    return DB::table('roles')->get();
+});
 
 Route::get('/', function () {
     return view('events.index');
